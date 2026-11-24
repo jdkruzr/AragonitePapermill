@@ -64,9 +64,9 @@ import. Notes 46258 (firmware 4.3) has not been checked either way.
 |---|---|---|---|
 | Palma 3 (824×1648) | 4.3.1 | 46343 | Desktop-built file: full bleed, forward and backward links work, survives close and reopen |
 | Note Mini C (1536×2048) | 4.3 | 46258 | App-built file: fills the height, links work |
-| Palma 2 Pro (824×1648) | 4.2 | 45960 | App-built file: full bleed on first open, forward and backward links work |
+| Palma 2 Pro (824×1648) | 4.2 | 45960 | App-built file: full bleed on first open, forward and backward links work; handwriting stays in place across a page turn and a close and reopen |
 
-Not yet tested: pen strokes staying aligned across a close and reopen, rotated or cropped
+Not yet tested: rotated or cropped
 PDF pages, landscape pages, PDFs with mixed page sizes, and behaviour over a long sync.
 
 ## How it works
