@@ -14,6 +14,12 @@ BOOX Notes can already bring a PDF in two ways, and each gives something up:
 Papermill writes a `.note` file that has the right page shape *and* points at the
 unmodified PDF, then hands it to Notes' own import screen.
 
+| Notes' own import | Through Papermill |
+|---|---|
+| <img src="docs/screenshots/before-notes-import.png" width="240" alt="The page shown small with white margins on all four sides"> | <img src="docs/screenshots/after-papermill.png" width="240" alt="The same page filling the whole screen"> |
+
+The same page of the same PDF on a Palma 3 (Notes 46343).
+
 ## Use
 
 1. Open Papermill and choose a PDF, or open/share a PDF to Papermill from a file manager.
@@ -62,7 +68,7 @@ import. Notes 46258 (firmware 4.3) has not been checked either way.
 
 | Device | Firmware | Notes | Result |
 |---|---|---|---|
-| Palma 3 (824×1648) | 4.3.1 | 46343 | Desktop-built file: full bleed, forward and backward links work, survives close and reopen |
+| Palma 3 (824×1648) | 4.3.1 | 46343 | Desktop-built and app-built files: full bleed, forward and backward links work, survives close and reopen; handwriting made on the Palma 2 Pro syncs here in the same place |
 | Note Mini C (1536×2048) | 4.3 | 46258 | App-built file: fills the height, links work |
 | Palma 2 Pro (824×1648) | 4.2 | 45960 | App-built file: full bleed on first open, forward and backward links work; handwriting stays in place across a page turn and a close and reopen |
 
