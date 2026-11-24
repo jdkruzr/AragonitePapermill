@@ -25,6 +25,26 @@ The notebook appears at the top level of Notes, named after the file (Notes may 
 number, as in "Address Book(1)"). To put the same notebook on another BOOX device, copy the
 `.note` file there and tap it in the file manager.
 
+| Papermill | Notes' import prompt | The notebook |
+|---|---|---|
+| <img src="docs/screenshots/app.png" width="240" alt="Papermill after making a notebook from a six-page PDF"> | <img src="docs/screenshots/import-prompt.png" width="240" alt="Notes asking whether to import the notebook"> | <img src="docs/screenshots/notebook.png" width="240" alt="A notebook page whose border touches all four screen edges"> |
+
+Taken on a Palma 2 Pro with the sample PDF in `docs/sample/`, whose pages have a border at
+the very edge. `python3 tools/make_sample.py` rebuilds it.
+
+## Which devices need it
+
+The A4 behaviour depends on the Notes version. Importing the same 1:2 PDF with Notes' own
+"From Local File":
+
+| Notes | Firmware | Device | Page size Notes stored | Result |
+|---|---|---|---|---|
+| 45960 | 4.2 | Palma 2 Pro | 2100×4200, the PDF's shape | Full bleed already |
+| 46343 | 4.3.1 | Palma 3 | 2100×2970, A4 | Letterboxed to 71% |
+
+So Papermill matters on newer Notes. On 45960 it produces the same result as the built-in
+import. Notes 46258 (firmware 4.3) has not been checked either way.
+
 ## What it does and doesn't do
 
 - Each notebook page is the PDF page fitted inside Notes' A4 box and cropped to the page,

@@ -48,6 +48,9 @@ Observed behaviour:
 - **The stock import writes A4 for every page**: `pageSize` 2100×2970, and a
   `pageSizeWithMargin` padded out to the screen's shape (2100×4200 on a 1:2 screen). A 1:2
   PDF page fitted into A4 is 1485×2970; A4 fitted into the screen leaves that at 70.7%.
+- **Older Notes did not do this.** Notes 45960 (firmware 4.2) stores the PDF page's own
+  shape scaled to a width of 2100 (2100×4200 for a 1:2 page), with field 7 equal to field 6,
+  and shows it full bleed.
 - **Setting fields 6 and 7 to the PDF page's own shape gives a full-bleed page.** Papermill
   uses the PDF page fitted inside 2100×2970, moved to the origin (1485×2970 for a 1:2 page),
   which keeps the stock import's units.
