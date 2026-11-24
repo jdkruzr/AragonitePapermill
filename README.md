@@ -97,6 +97,15 @@ Android Studio is optional; a JDK 17 and the Android SDK are enough.
 
 The debug APK is under `app/build/outputs/apk/debug/`.
 
+To sign a release, supply a Java properties file at
+`~/.local/share/aragonite-papermill/signing/release.properties` with `storeFile` (absolute
+keystore path), `storePassword`, `keyAlias` and `keyPassword`, then run
+`./gradlew :app:assembleRelease`.
+
+Releases are made by the **Release** workflow (run it by hand from the Actions tab). It tests,
+lints and signs the version on `main`, checks the signing certificate, and publishes a GitHub
+Release tagged `v<versionName>` with the notes in `docs/releases/<versionName>.md`.
+
 The icon reuses the Aragonite family's crystal master from
 [Aragonite PowerSync](https://github.com/jdkruzr/AragonitePowerSync/tree/main/design/icons).
 The source artwork and the editable sheet symbol are in `design/icons/`. Run

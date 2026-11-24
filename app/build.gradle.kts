@@ -1,5 +1,14 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
+}
+
+// Release signing is supplied outside the repository; without it, release builds are unsigned.
+val signingFile = File(System.getProperty("user.home"), ".local/share/aragonite-papermill/signing/release.properties")
+val releaseKey = Properties()
+if (signingFile.isFile) {
+    signingFile.inputStream().use { releaseKey.load(it) }
 }
 
 android {
@@ -13,6 +22,18 @@ android {
         targetSdk = 35
         versionCode = 2
         versionName = "0.2.0"
+    }
+
+    if (signingFile.isFile) {
+        val persistent = signingConfigs.create("persistent") {
+            storeFile = file(releaseKey.getProperty("storeFile"))
+            storePassword = releaseKey.getProperty("storePassword")
+            keyAlias = releaseKey.getProperty("keyAlias")
+            keyPassword = releaseKey.getProperty("keyPassword")
+        }
+        buildTypes.named("release") {
+            signingConfig = persistent
+        }
     }
 
     compileOptions {
