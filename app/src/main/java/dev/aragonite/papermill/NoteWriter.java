@@ -15,8 +15,8 @@ import java.util.zip.ZipOutputStream;
  *
  * <p>The layout and constant values follow a notebook that Notes 46343 (firmware 4.3.1)
  * wrote for its own "From Local File" PDF import. The deliberate differences are the page
- * size (Notes stores A4 for every page, which letterboxes anything that is not A4-shaped)
- * and the saved zoom. Records carry no account, library or device identifiers; the Notes
+ * size (that version stores A4 for every page, which letterboxes anything that is not
+ * A4-shaped; Notes 45960 stored the page's own shape, as this does) and the saved zoom. Records carry no account, library or device identifiers; the Notes
  * importer issues its own notebook and page ids.
  */
 final class NoteWriter {
@@ -39,9 +39,8 @@ final class NoteWriter {
         InputStream open() throws IOException;
     }
 
-    /** Notes fits every imported page inside this box (A4 in its page units). */
-    static final double BOX_WIDTH = 2100;
-    static final double BOX_HEIGHT = 2970;
+    /** Width of every page in Notes units (an A4 page is 2100 x 2970). */
+    static final double PAGE_WIDTH = 2100;
     static final int NOTES_VERSION = 46343;
 
     private static final String PEN_INFO =
@@ -72,13 +71,13 @@ final class NoteWriter {
     private NoteWriter() {
     }
 
-    /** Page size in Notes units: the PDF page fitted inside the A4 box, turned for landscape. */
+    /**
+     * Page size in Notes units: the PDF page scaled to the standard width. This is what
+     * Notes 45960 stores for an imported PDF page, so pens and other tools are sized against
+     * the page the way they are in a notebook Notes made itself.
+     */
     static double[] fit(double widthPt, double heightPt) {
-        boolean portrait = heightPt >= widthPt;
-        double boxWidth = portrait ? BOX_WIDTH : BOX_HEIGHT;
-        double boxHeight = portrait ? BOX_HEIGHT : BOX_WIDTH;
-        double scale = Math.min(boxWidth / widthPt, boxHeight / heightPt);
-        return new double[] {round3(widthPt * scale), round3(heightPt * scale)};
+        return new double[] {PAGE_WIDTH, round3(heightPt * PAGE_WIDTH / widthPt)};
     }
 
     /**

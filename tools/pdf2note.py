@@ -12,7 +12,8 @@ asks "Do you want to import notebook ...?" and creates a new notebook.
 
 Layout and field values follow a notebook that Notes 46343 (Palma 3,
 firmware 4.3.1) wrote for its own "From Local File" PDF import. The only
-deliberate differences are the page sizes and the saved zoom.
+deliberate differences are the page sizes (the PDF page's own shape at a width
+of 2100, as Notes 45960 stored) and the saved zoom.
 """
 import argparse
 import json
@@ -25,8 +26,8 @@ import zipfile
 
 from pypdf import PdfReader
 
-# Stock import fits every page inside this box (A4 in Notes page units).
-BOX_W, BOX_H = 2100.0, 2970.0
+# Width of every page in Notes units (an A4 page is 2100 x 2970).
+PAGE_WIDTH = 2100.0
 NOTES_VERSION = 46343
 
 PEN_INFO = (
@@ -105,10 +106,11 @@ def page_boxes(reader):
 
 
 def fit(w, h):
-    """Page size in Notes units: the PDF page fitted inside the stock A4 box."""
-    bw, bh = (BOX_W, BOX_H) if h >= w else (BOX_H, BOX_W)
-    s = min(bw / w, bh / h)
-    return round(w * s, 3), round(h * s, 3)
+    """Page size in Notes units: the PDF page scaled to the standard width.
+
+    This is what Notes 45960 stores for an imported PDF page.
+    """
+    return PAGE_WIDTH, round(h * PAGE_WIDTH / w, 3)
 
 
 def build(pdf_path, out_path, title, screen):

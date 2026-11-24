@@ -52,8 +52,10 @@ Observed behaviour:
   shape scaled to a width of 2100 (2100×4200 for a 1:2 page), with field 7 equal to field 6,
   and shows it full bleed.
 - **Setting fields 6 and 7 to the PDF page's own shape gives a full-bleed page.** Papermill
-  uses the PDF page fitted inside 2100×2970, moved to the origin (1485×2970 for a 1:2 page),
-  which keeps the stock import's units.
+  writes what Notes 45960 wrote: the PDF page scaled to a width of 2100. (Papermill 0.1 used
+  the page fitted inside 2100×2970 instead, 1485×2970 for a 1:2 page. It displays the same,
+  but ink thickness is stored in page units, so the same pen draws about 40% heavier
+  relative to the page.)
 - **Field 11 identifies the PDF page.** The object number is the PDF's own page object.
   When a link is tapped, Notes builds the same string for the link's target and looks for
   the notebook page whose fields 10 and 11 equal it exactly, so the string must be written

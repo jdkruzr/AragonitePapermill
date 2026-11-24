@@ -48,13 +48,14 @@ The A4 behaviour depends on the Notes version. Importing the same 1:2 PDF with N
 | 45960 | 4.2 | Palma 2 Pro | 2100×4200, the PDF's shape | Full bleed already |
 | 46343 | 4.3.1 | Palma 3 | 2100×2970, A4 | Letterboxed to 71% |
 
-So Papermill matters on newer Notes. On 45960 it produces the same result as the built-in
+So Papermill matters on newer Notes. On 45960 it stores the same page size as the built-in
 import. Notes 46258 (firmware 4.3) has not been checked either way.
 
 ## What it does and doesn't do
 
-- Each notebook page is the PDF page fitted inside Notes' A4 box and cropped to the page,
-  which keeps the page units a stock PDF import uses.
+- Each notebook page is the PDF page scaled to Notes' standard page width (2100 units).
+  That is the size the older Notes import stored, so pens are sized against the page the
+  way they are in a notebook Notes made itself.
 - The PDF is embedded byte for byte. Its links are ordinary PDF links; nothing is rewritten.
 - The file carries no account, library or device identifiers. Notes issues its own notebook
   and page ids on import.

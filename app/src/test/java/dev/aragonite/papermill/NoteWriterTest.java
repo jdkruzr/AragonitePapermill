@@ -65,7 +65,7 @@ public class NoteWriterTest {
         assertEquals(3, pages.size());
 
         Map<Integer, Object> first = pages.get(0);
-        String palma = "{\"bottom\":2970.0,\"empty\":false,\"left\":0.0,\"right\":1485.0,"
+        String palma = "{\"bottom\":4200.0,\"empty\":false,\"left\":0.0,\"right\":2100.0,"
                 + "\"stability\":0,\"top\":0.0}";
         assertEquals(palma, first.get(6));
         assertEquals("the margin box must equal the page", palma, first.get(7));
@@ -75,8 +75,8 @@ public class NoteWriterTest {
 
         assertEquals("{\"bottom\":2717.647,\"empty\":false,\"left\":0.0,\"right\":2100.0,"
                 + "\"stability\":0,\"top\":0.0}", pages.get(1).get(6));
-        assertEquals("landscape pages use the box turned on its side",
-                "{\"bottom\":2100.0,\"empty\":false,\"left\":0.0,\"right\":2717.647,"
+        assertEquals("landscape pages are scaled to the same width",
+                "{\"bottom\":1622.727,\"empty\":false,\"left\":0.0,\"right\":2100.0,"
                 + "\"stability\":0,\"top\":0.0}", pages.get(2).get(6));
         assertEquals(3f, pages.get(2).get(4));
     }
@@ -119,7 +119,7 @@ public class NoteWriterTest {
     public void opensZoomedToFitTheFirstPage() {
         Map<Integer, Object> doc = decode(files.get(root + "virtual/doc/pb/"
                 + "00000000-0000-0000-0000-000000000000"));
-        assertEquals((float) (824 / 1485.0), (Float) doc.get(5), 1e-6);
+        assertEquals((float) (824 / 2100.0), (Float) doc.get(5), 1e-6);
         assertEquals(pageRecords().get(0).get(1), doc.get(4));
     }
 
