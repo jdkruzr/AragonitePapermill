@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Papermill</string>
+    <string name="intro">Turns a PDF into a BOOX notebook whose pages are the PDF\'s own shape, with the PDF\'s links working.</string>
+    <string name="choose_pdf">Choose PDF</string>
+    <string name="notebook_name">Notebook name</string>
+    <string name="make_notebook">Make notebook</string>
+    <string name="open_in_notes">Open in Notes</string>
+    <string name="reading">Reading %1$s…</string>
+    <string name="pdf_summary">%1$s\n%2$d pages · %3$s</string>
+    <string name="page_size_one">%1$s × %2$s pt</string>
+    <string name="page_size_mixed">mixed page sizes</string>
+    <string name="shape_fills">Pages match this screen\'s shape and will fill it.</string>
+    <string name="shape_bars_sides">Pages are narrower than this screen; they will fill the height.</string>
+    <string name="shape_bars_ends">Pages are wider than this screen; they will fill the width.</string>
+    <string name="making">Making notebook…</string>
+    <string name="made">Saved %1$s (%2$s) in Download/Papermill. Open it in Notes to import it; copy the file to use it on another BOOX device.</string>
+    <string name="error_read">Couldn\'t read that file.</string>
+    <string name="error_encrypted">That PDF is password-protected. Notes can\'t open those either.</string>
+    <string name="error_structure">That PDF has a page layout Papermill can\'t use.</string>
+    <string name="error_write">Couldn\'t make the notebook: %1$s</string>
+    <string name="error_no_notes">The BOOX Notes app isn\'t available here. Copy the file from Download/Papermill to a BOOX device and open it there.</string>
+    <string name="error_name">Give the notebook a name.</string>
+</resources>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- A sheet of paper with a folded corner. -->
+    <path id="sheet" d="M46 22H122L160 60V178H46Z"/>
+    <path id="fold" d="M122 22V60H160Z"/>
+    <path id="rules" d="M70 96H136 M70 122H136 M70 148H112"/>
+  </defs>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <use xlink:href="#sheet" fill="#fffaf0" stroke="#fffaf0" stroke-width="30"/>
+    <use xlink:href="#sheet" fill="#6fb8b2" stroke="#233839" stroke-width="13"/>
+    <use xlink:href="#fold" fill="#fffaf0" stroke="#233839" stroke-width="11"/>
+    <use xlink:href="#rules" fill="none" stroke="#233839" stroke-width="11"/>
+  </g>
+</svg>
